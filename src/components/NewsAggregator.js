@@ -35,6 +35,10 @@ const NewsAggregator = () => {
       .catch((error) => console.error('Error:', error));
   };
 
+  const handleSearch = () => {
+    fetchNewsHeadlinesWithSearch();
+  };
+
 };
 
 export default NewsAggregator;

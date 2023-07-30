@@ -47,6 +47,15 @@ const NewsAggregator = () => {
     <div className="news-aggregator">
       <h2>News Aggregator</h2>
 
+      <div className="search-form">
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={handleSearchInputChange}
+          placeholder="Enter a topic or keyword..."
+        />
+        <button onClick={handleSearch}>Search</button>
+      </div>
 
     </div>
   );

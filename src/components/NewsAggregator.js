@@ -26,6 +26,15 @@ const NewsAggregator = () => {
       .catch((error) => console.error('Error:', error));
   };
 
+  const fetchNewsHeadlinesWithSearch = () => {
+    fetch(`https://newsapi.org/v2/everything?q=${searchTerm}&apiKey=${API_KEY}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setNewsHeadlines(data.articles);
+      })
+      .catch((error) => console.error('Error:', error));
+  };
+
 };
 
 export default NewsAggregator;

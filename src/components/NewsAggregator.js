@@ -57,6 +57,19 @@ const NewsAggregator = () => {
         <button onClick={handleSearch}>Search</button>
       </div>
 
+      <div className="news-list">
+        {newsHeadlines.map((news, index) => (
+          <div key={index} className="news-item">
+            <LazyLoadImage
+              src={news.urlToImage || 'placeholder.jpg'} // Use a placeholder image if 'urlToImage' is missing
+              alt="News Thumbnail"
+              effect="blur" // Optional effect for loading the image
+              height={100} // Set the desired height of the image
+              width={150} // Set the desired width of the image
+              // Additional image props can be added here, like 'className', 'style', etc.
+            />
+
+      </div>
     </div>
   );
 };

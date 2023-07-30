@@ -17,6 +17,14 @@ const NewsAggregator = () => {
     }
   }, [searchTerm]);
 
+  const fetchTopHeadlines = () => {
+    fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setNewsHeadlines(data.articles);
+      })
+      .catch((error) => console.error('Error:', error));
+  };
 
 };
 

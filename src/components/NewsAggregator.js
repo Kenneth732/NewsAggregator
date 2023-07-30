@@ -44,7 +44,11 @@ const NewsAggregator = () => {
   };
 
   return (
+    <div className="news-aggregator">
+      <h2>News Aggregator</h2>
 
+
+    </div>
   );
 };
 

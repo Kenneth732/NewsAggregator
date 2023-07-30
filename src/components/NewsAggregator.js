@@ -68,7 +68,14 @@ const NewsAggregator = () => {
               width={150} // Set the desired width of the image
               // Additional image props can be added here, like 'className', 'style', etc.
             />
-
+            <h3>{news.title}</h3>
+            {news.author && <p>By {news.author}</p>}
+            <p>{news.description}</p>
+            <a href={news.url} target="_blank" rel="noopener noreferrer">
+              Read More
+            </a>
+          </div>
+        ))}
       </div>
     </div>
   );

@@ -39,6 +39,13 @@ const NewsAggregator = () => {
     fetchNewsHeadlinesWithSearch();
   };
 
+  const handleSearchInputChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  return (
+
+  );
 };
 
 export default NewsAggregator;

@@ -3,6 +3,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import './NewsAggregator.css';
 
+
 const API_KEY = '6cbdef411b3b47529a17b5cf4667303b'; // Replace with your NewsAPI key
 
 const NewsAggregator = () => {
@@ -46,39 +47,45 @@ const NewsAggregator = () => {
   return (
     <div className="news-aggregator">
       <h2>News Aggregator</h2>
+      <div className='news'>
+        <div className="news-list">
 
-      <div className="search-form">
-        <input
-          type="text"
-          value={searchTerm}
-          onChange={handleSearchInputChange}
-          placeholder="Enter a topic or keyword..."
-        />
-        <button onClick={handleSearch}>Search</button>
-      </div>
+          {newsHeadlines.map((news, index) => (
+            // Check if it's not the first card (index > 0) before rendering
+            index > 0 && (
+              <div className="max-w-md py-4 px-8 bg-white shadow-lg rounded-lg my-20" key={index}>
+                <div className="flex justify-center md:justify-end -mt-16">
+                  <img className="w-20 h-20 object-cover rounded-full border-2 border-indigo-500" src={news.urlToImage || 'placeholder.jpg'} alt="News" />
+                </div>
+                <div>
+                  <h2 className="text-gray-800 text-3xl font-semibold">{news.title}</h2>
+                  <p className="mt-2 text-gray-600">{news.author} && By {news.author}</p>
+                  <p className="mt-2 text-gray-600">{news.description}</p>
+                </div>
+                <div className="flex justify-end mt-4">
+                  <a href={news} target="_blank" rel="noopener noreferrer" className="text-xl font-medium text-indigo-500">
+                    Read More
+                  </a>
+                </div>
+              </div>
+            )
+          ))}
+        </div>
 
-      <div className="news-list">
-        {newsHeadlines.map((news, index) => (
-          <div key={index} className="news-item">
-            <LazyLoadImage
-              src={news.urlToImage || 'placeholder.jpg'} // Use a placeholder image if 'urlToImage' is missing
-              alt="News Thumbnail"
-              effect="blur" // Optional effect for loading the image
-              height={100} // Set the desired height of the image
-              width={150} // Set the desired width of the image
-              // Additional image props can be added here, like 'className', 'style', etc.
+        <div className='middle'>
+          <div className="search-form">
+            <input
+              type="text"
+              value={searchTerm}
+              onChange={handleSearchInputChange}
+              placeholder="Enter a topic or keyword..."
             />
-            <h3>{news.title}</h3>
-            {news.author && <p>By {news.author}</p>}
-            <p>{news.description}</p>
-            <a href={news.url} target="_blank" rel="noopener noreferrer">
-              Read More
-            </a>
+            <button onClick={handleSearch}>Search</button>
           </div>
-        ))}
+        </div>
       </div>
-    </div>
-  );
+      </div>
+      );
 };
 
-export default NewsAggregator;
+      export default NewsAggregator;
